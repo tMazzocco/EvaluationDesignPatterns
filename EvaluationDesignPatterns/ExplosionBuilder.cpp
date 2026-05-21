@@ -18,13 +18,13 @@ class IExplosionBuilder
 public:
 	virtual ~IExplosionBuilder() = default;
 
-	virtual void withPosition() const = 0;
-	virtual void withColor() const = 0;
-	virtual void withLifetime() const = 0;
-	virtual void withSpread() const = 0;
-	virtual void withCount() const = 0;
+	virtual void withPosition(Position p) = 0;
+	virtual void withColor(string color) = 0;
+	virtual void withLifetime(int lifetime) = 0;
+	virtual void withSpread(string spread) = 0;
+	virtual void withCount(int count) = 0;
 
-	virtual void build() const = 0;
+	virtual void build() = 0;
 };
 
 class ClassicExplosionBuilder : public IExplosionBuilder
