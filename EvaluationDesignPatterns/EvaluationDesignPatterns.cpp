@@ -16,8 +16,8 @@ mutex FactorySingleton::mutex_ffInstance;
 
 int main()
 {
-    BurningExplosionFactory burnningExplosionFactory;
-    ElecExplosionFactory eExFacto;
+    BurnningExplosionCacheProxy burnningExplosionFactory;
+    ElecExplosionCacheProxy eExFacto;
 
 
     cout << "--- Creating Explosion 1 (wood) ---\n";
