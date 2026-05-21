@@ -1,0 +1,6 @@
+## Known issues :
+- the program crash if an explosion is created with 0 particles and tried to put in cache
+- during implementation of ParticleDecorator we stumble accross the fact we didn't used shared_ptr for our particles so implementing decorators that canalter the particle color is compromised
+
+## AI usage :
+- raw c++ related errors showing in compiler
