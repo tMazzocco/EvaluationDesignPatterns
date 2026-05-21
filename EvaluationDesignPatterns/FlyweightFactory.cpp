@@ -16,7 +16,8 @@ private:
 	virtual string GetKey(const IParticleFlyweight& pf) const = 0;
 
 public:
-	//virtual ParticleFlyweight createFlyweight() const = 0;
+	virtual ParticleFlyweight createFlyweight() const = 0;
+	virtual ParticleFlyweight createFlyweight(string) const = 0;
 };
 
 
@@ -38,7 +39,15 @@ public:
 
 	FlyweightFactory() {}
 
+	ParticleFlyweight createFlyweight() const override
+	{
+		return ParticleFlyweight("");
+	}
 
+	ParticleFlyweight createFlyweight(const string type) const override
+	{
+		return ParticleFlyweight(type);
+	}
 
 	ParticleFlyweight getParticleFlyweight(ParticleFlyweight &pf)
 	{
