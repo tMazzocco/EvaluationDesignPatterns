@@ -42,7 +42,7 @@ class Particle : public IParticlePrototype
 private:
 
 public:
-	IParticlePrototype *clone() const override
+	Particle *clone() const override
 	{
 		return new Particle(*this);
 	}

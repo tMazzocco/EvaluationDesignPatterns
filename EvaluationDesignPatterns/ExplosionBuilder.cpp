@@ -10,7 +10,7 @@ class Explosion
 {
 public:
 	string spread;
-    vector<Particle> particles_;
+    vector<Particle*> particles_;
 };
 
 class IExplosionBuilder
