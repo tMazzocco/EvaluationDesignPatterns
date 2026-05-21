@@ -2,6 +2,7 @@
 #include <memory>
 #include "FlyweightFactory.cpp"
 #include "ExplosionBuilder.cpp"
+#include "ExplosionCacheProxy.cpp"
 
 #include "ExplosionFactory.cpp"
 
@@ -9,6 +10,8 @@
 using namespace std;
 
 FactorySingleton* FactorySingleton::ffInstance = nullptr;
+ExplosionCache* ExplosionCache::instance = nullptr;
+
 mutex FactorySingleton::mutex_ffInstance;
 
 int main()
