@@ -16,7 +16,16 @@ public:
 	}
 };
 
-class IParticlePrototype
+class IParticle {
+public:
+	virtual IParticle* rendering() = 0;
+	virtual ~IParticle() = default;
+
+	virtual string getParticleColor() const = 0;
+	virtual void setParticleColor(string color) = 0;
+};
+
+class IParticlePrototype : public IParticle
 {
 protected:
 	IParticlePrototype() {}
@@ -34,8 +43,19 @@ public:
 	int lifetime = 1;
 	shared_ptr<ParticleFlyweight> graphics;
 
+	string getParticleColor() const override
+	{
+		return this->color;
+	}
+
+	void setParticleColor(string color) override
+	{
+		this->color = color;
+	}
+
 	virtual IParticlePrototype* clone() const = 0;
 };
+
 
 class Particle : public IParticlePrototype
 {
@@ -47,5 +67,10 @@ public:
 	Particle* clone() const override
 	{
 		return new Particle(*this);
+	}
+
+	Particle* rendering() override
+	{
+		return this;
 	}
 };
