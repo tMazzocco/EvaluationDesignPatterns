@@ -128,6 +128,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="EvaluationDesignPatterns.cpp" />
+    <ClCompile Include="FlyweightFactory.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleFlyweight.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

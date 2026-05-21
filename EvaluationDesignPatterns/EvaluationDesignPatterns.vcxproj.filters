@@ -13,18 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Fichiers sources\interfaces">
-      <UniqueIdentifier>{343228e6-06a2-4280-99a0-578375c4fa6d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\factories">
-      <UniqueIdentifier>{12bb2637-993b-4962-bcd9-e40dc4e25eea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\decorators">
-      <UniqueIdentifier>{a124325a-7b5c-4176-84e3-ce0e5e5a013a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EvaluationDesignPatterns.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleFlyweight.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FlyweightFactory.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

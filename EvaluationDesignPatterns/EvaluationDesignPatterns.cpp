@@ -1,9 +1,19 @@
-// EvaluationDesignPatterns.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
-//
-
 #include <iostream>
+#include <memory>
+#include "FlyweightFactory.cpp"
+
+using namespace std;
+
+FactorySingleton* FactorySingleton::ffInstance = nullptr;
+mutex FactorySingleton::mutex_ffInstance;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    cout << "Getting our instance throught the singleton :\n";
+    FactorySingleton* factory = FactorySingleton::getInstance();
+
+    cout << "Creating 2 Flyweight with identical types";
+    ParticleFlyweight p1("burningFly", "shaderB", "small", "wood");
+    ParticleFlyweight p2("metal");
+    ParticleFlyweight p3("metal");
 }
