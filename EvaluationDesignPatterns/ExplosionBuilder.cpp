@@ -11,6 +11,16 @@ class Explosion
 public:
 	string spread;
     vector<Particle*> particles_;
+    Explosion* clone() const
+	{
+		Explosion* copy = new Explosion();
+		copy->particles_.reserve(particles_.size());
+		for (const auto& p : particles_)
+		{
+			copy->particles_.push_back(p);
+		}
+		return copy;
+	}
 };
 
 class IExplosionBuilder
