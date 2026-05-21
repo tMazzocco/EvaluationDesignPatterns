@@ -20,10 +20,6 @@ private:
 
 	ExplosionCache() {}
 
-	bool exploExist(string type)
-	{
-		return explosions_.find(type) != explosions_.end();
-	}
 
 public:
 	static ExplosionCache* getInstance()
@@ -38,8 +34,15 @@ public:
 		return instance;
 	}
 
+	bool exploExist(string type)
+	{
+		cout << "Checking if explo exist...\n";
+		return explosions_.find(type) != explosions_.end();
+	}
+
 	void addExplosionToCache(Explosion* exp)
 	{
+		cout << "Adding explo to cache: " << exp->particles_[0]->graphics->getType() << "\n";
 		string type = exp->particles_[0]->graphics->getType();
 		if (exploExist(type))
 			return;
@@ -49,11 +52,49 @@ public:
 
 	Explosion* reuseExplosion(string type)
 	{
+		cout << "Reusing explosion: " << type << "\n";
 		return explosions_.at(type)->clone();
 	}
 };
 
-class ExplosionCacheProxy : public IExplosionFactory
+class ElecExplosionCacheProxy : public IExplosionFactory
 {
+private:
+	string key = "electFly";
+public:
+	Explosion* createExplosion(Position p)
+	{
+		ExplosionCache* cache = ExplosionCache::getInstance();
+		if (cache->exploExist(key))
+		{
+			return cache->reuseExplosion(key);
+		}
 
+		ElecExplosionFactory eExFacto;
+		Explosion* explo = eExFacto.createExplosion(p);
+		cache->addExplosionToCache(explo);
+		return explo;
+	}
+};
+
+
+class BurnningExplosionCacheProxy : public IExplosionFactory
+{
+private:
+	string key = "burningFly";
+
+public:
+	Explosion* createExplosion(Position p)
+	{
+		ExplosionCache* cache = ExplosionCache::getInstance();
+		if (cache->exploExist(key))
+		{
+			return cache->reuseExplosion(key);
+		}
+
+		BurningExplosionFactory factory;
+		Explosion* explo = factory.createExplosion(p);
+		cache->addExplosionToCache(explo);
+		return explo;
+	}
 };
