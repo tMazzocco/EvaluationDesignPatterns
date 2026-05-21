@@ -39,8 +39,6 @@ public:
 
 class Particle : public IParticlePrototype
 {
-private:
-
 public:
 	Particle() {}
 
