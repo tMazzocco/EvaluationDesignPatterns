@@ -43,6 +43,9 @@ private:
 
 public:
 	Particle() {}
+
+	Particle(shared_ptr<ParticleFlyweight> pf) : IParticlePrototype(pf) {}
+
 	Particle* clone() const override
 	{
 		return new Particle(*this);

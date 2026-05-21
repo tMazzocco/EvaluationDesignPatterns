@@ -78,8 +78,7 @@ public:
 	{
 		for (int i = 0; i < count; i++)
 		{
-			// Faux mais je n'arrive pas a l'implémenter avec le .clone()
-		    explosionObj->particles_.push_back(pBlueprint);
+		    explosionObj->particles_.push_back(pBlueprint.clone());
 		}
 	}
 

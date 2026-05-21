@@ -24,7 +24,7 @@ public:
 class FlyweightFactory : public IFlyweightFactory
 {
 private:
-	unordered_map<string, ParticleFlyweight> flyweights_;
+	unordered_map<string, shared_ptr<ParticleFlyweight>> flyweights_;
 
 	string GetKey(const IParticleFlyweight& pf) const
 	{
@@ -49,16 +49,16 @@ public:
 		return ParticleFlyweight(type);
 	}
 
-	ParticleFlyweight getParticleFlyweight(ParticleFlyweight &pf)
+	shared_ptr<ParticleFlyweight> getParticleFlyweight(ParticleFlyweight &pf)
 	{
 		if (this->flyweights_.find(pf.getType()) == this->flyweights_.end())
 		{
 			cout << "FlyweightFactory: Can't find a ParticleFlyweight, creating new one.\n";
-			this->flyweights_.insert(std::make_pair(pf.getType(), ParticleFlyweight(pf)));
+			this->flyweights_.insert(make_pair(pf.getType(), make_shared<ParticleFlyweight>(pf)));
 		}
 		else
 		{
-			std::cout << "FlyweightFactory: Reusing existing ParticleFlyweight.\n";
+			cout << "FlyweightFactory: Reusing existing ParticleFlyweight: " << pf.getType() << "\n";
 		}
 		return this->flyweights_.at(pf.getType());
 	}
@@ -88,7 +88,7 @@ public:
 		return ffInstance;
 	};
 
-	ParticleFlyweight getParticleFlyweight(ParticleFlyweight& pf)
+	shared_ptr<ParticleFlyweight> getParticleFlyweight(ParticleFlyweight& pf)
 	{
 		return flyweightFactory->getParticleFlyweight(pf);
 	}
