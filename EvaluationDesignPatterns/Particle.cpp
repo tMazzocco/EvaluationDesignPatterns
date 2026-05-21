@@ -34,7 +34,7 @@ public:
 	int lifetime = 1;
 	shared_ptr<ParticleFlyweight> graphics;
 
-	virtual IParticlePrototype *clone() const = 0;
+	virtual IParticlePrototype* clone() const = 0;
 };
 
 class Particle : public IParticlePrototype
@@ -42,7 +42,8 @@ class Particle : public IParticlePrototype
 private:
 
 public:
-	Particle *clone() const override
+	Particle() {}
+	Particle* clone() const override
 	{
 		return new Particle(*this);
 	}
