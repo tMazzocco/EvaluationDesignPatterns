@@ -5,19 +5,14 @@
 
 struct Position
 {
-protected:
+public:
 	float x = 0;
 	float y = 0;
-	float taille = 0;
-	float vitesse = 0;
-	string color;
 
-public:
 	Position() { }
-
-	Position(string color)
-	{
-		this->color = color;
+	Position(float x, float y) {
+		this->x = x;
+		this->y = y;
 	}
 };
 
@@ -32,7 +27,11 @@ protected:
 
 public:
 
+	float taille = 0;
+	float vitesse = 0;
+	string color;
 	Position position;
+	int lifetime = 1;
 	shared_ptr<ParticleFlyweight> graphics;
 
 	virtual IParticlePrototype *clone() const = 0;
